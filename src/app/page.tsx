@@ -1,6 +1,7 @@
 import { Body } from "@/components/dashboard/Body";
 import { Header } from "@/components/dashboard/Header";
 import { InfoCardGrid } from "@/components/dashboard/InfoCardGrid";
+import { TransactionsTable } from "@/components/dashboard/TransactionsTable";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Header />
       <InfoCardGrid />
       <Body />
+      <TransactionsTable />
     </main>
   );
 }

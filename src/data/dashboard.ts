@@ -33,3 +33,42 @@ export const infoCards: InfoCardData[] = [
     trend: "positive",
   },
 ];
+
+export type TransactionData = {
+  date: string;
+  merchant: string;
+  category: string;
+  amount: string;
+  status: "Completed" | "Pending" | "Scheduled";
+};
+
+export const transactions: TransactionData[] = [
+  {
+    date: "Jun 24",
+    merchant: "ETrade",
+    category: "Investment",
+    amount: "$500.00",
+    status: "Completed",
+  },
+  {
+    date: "Jun 23",
+    merchant: "Mortgage Payment",
+    category: "Housing",
+    amount: "$1,850.00",
+    status: "Completed",
+  },
+  {
+    date: "Jun 22",
+    merchant: "Electric Utility",
+    category: "Bills",
+    amount: "$142.38",
+    status: "Pending",
+  },
+  {
+    date: "Jun 21",
+    merchant: "Payroll Deposit",
+    category: "Income",
+    amount: "$3,250.00",
+    status: "Completed",
+  },
+];

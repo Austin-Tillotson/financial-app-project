@@ -1,5 +1,5 @@
 import type { Trend } from "@/data/dashboard";
-import Card from "../ui/Card";
+import { Card } from "../ui/Card";
 
 type InfoCardProps = {
   label: string;

@@ -1,3 +1,4 @@
+import { Body } from "@/components/dashboard/Body";
 import { Header } from "@/components/dashboard/Header";
 import { InfoCardGrid } from "@/components/dashboard/InfoCardGrid";
 
@@ -6,6 +7,7 @@ export default function Home() {
     <main className="bg-slate-50 text-slate-950 px-5 py-5">
       <Header />
       <InfoCardGrid />
+      <Body />
     </main>
   );
 }

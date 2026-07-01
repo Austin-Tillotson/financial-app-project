@@ -1,4 +1,4 @@
-import { AllocationChart } from "./AllocationChart";
+import { AllocationBreakdown } from "./AllocationBreakdown";
 import { Card } from "@/components/ui/Card";
 import { PerformanceChart } from "./PerformanceChart";
 
@@ -12,7 +12,7 @@ export function Body() {
 
       <Card>
         <h2>Asset Allocation</h2>
-        <AllocationChart />
+        <AllocationBreakdown />
       </Card>
     </section>
   );

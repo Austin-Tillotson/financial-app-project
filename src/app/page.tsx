@@ -1,6 +1,7 @@
 import { Body } from "@/components/dashboard/Body";
 import { Header } from "@/components/dashboard/Header";
 import { InfoCardGrid } from "@/components/dashboard/InfoCardGrid";
+import { StockHoldingsTable } from "@/components/dashboard/StockHoldingsTable";
 import { TransactionsTable } from "@/components/dashboard/TransactionsTable";
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
       <Header />
       <InfoCardGrid />
       <Body />
+      <StockHoldingsTable />
       <TransactionsTable />
     </main>
   );

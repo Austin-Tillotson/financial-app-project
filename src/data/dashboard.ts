@@ -98,3 +98,52 @@ export const transactions: TransactionData[] = [
     status: "Completed",
   },
 ];
+
+export type StockHoldingData = {
+  ticker: string;
+  company: string;
+  shares: number;
+  averageCost: string;
+  marketValue: string;
+  dayChange: string;
+  trend: Trend;
+};
+
+export const stockHoldings: StockHoldingData[] = [
+  {
+    ticker: "AAPL",
+    company: "Apple Inc.",
+    shares: 24,
+    averageCost: "$168.42",
+    marketValue: "$5,124.96",
+    dayChange: "+1.2%",
+    trend: "positive",
+  },
+  {
+    ticker: "MSFT",
+    company: "Microsoft Corp.",
+    shares: 18,
+    averageCost: "$312.75",
+    marketValue: "$8,214.30",
+    dayChange: "+0.8%",
+    trend: "positive",
+  },
+  {
+    ticker: "NVDA",
+    company: "NVIDIA Corp.",
+    shares: 10,
+    averageCost: "$89.10",
+    marketValue: "$1,245.60",
+    dayChange: "-1.4%",
+    trend: "negative",
+  },
+  {
+    ticker: "VTI",
+    company: "Vanguard Total Stock Market ETF",
+    shares: 32,
+    averageCost: "$221.30",
+    marketValue: "$8,902.40",
+    dayChange: "+0.3%",
+    trend: "positive",
+  },
+];

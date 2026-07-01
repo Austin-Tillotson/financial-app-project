@@ -34,6 +34,32 @@ export const infoCards: InfoCardData[] = [
   },
 ];
 
+export type PerformanceData = {
+  month: string;
+  balance: number;
+};
+
+export const performanceData: PerformanceData[] = [
+  { month: "Jan", balance: 178000 },
+  { month: "Feb", balance: 181500 },
+  { month: "Mar", balance: 186200 },
+  { month: "Apr", balance: 191000 },
+  { month: "May", balance: 198400 },
+  { month: "Jun", balance: 205654 },
+];
+
+export type AllocationData = {
+  name: string;
+  value: number;
+};
+
+export const allocationData: AllocationData[] = [
+  { name: "Cash", value: 18000 },
+  { name: "Stocks", value: 25249 },
+  { name: "401(k)", value: 150634 },
+  { name: "Debt", value: 11834 },
+];
+
 export type TransactionData = {
   date: string;
   merchant: string;

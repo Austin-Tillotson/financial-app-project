@@ -18,3 +18,27 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
+
+.dashboard-table-header {
+  @apply mb-4 text-lg font-semibold text-slate-950
+}
+
+.dashboard-table {
+  @apply w-full border-collapse text-left text-sm;
+}
+
+.dashboard-table-head-row {
+  @apply border-b border-slate-200 text-slate-500;
+}
+
+.dashboard-table-header-cell {
+  @apply py-2 pr-4 font-medium;
+}
+
+.dashboard-table-row {
+  @apply border-b border-slate-100 last:border-0;
+}
+
+.dashboard-table-cell {
+  @apply py-3 pr-4;
+}

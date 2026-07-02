@@ -4,7 +4,7 @@ import { PerformanceChart } from "./PerformanceChart";
 
 export function Body() {
   return (
-    <section className="grid md:grid-cols-2">
+    <section className="grid gap-4 md:grid-cols-2">
       <Card>
         <h2>Portfolio Performance</h2>
         <PerformanceChart />

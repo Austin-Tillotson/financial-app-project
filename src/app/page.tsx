@@ -7,11 +7,13 @@ import { TransactionsTable } from "@/components/dashboard/TransactionsTable";
 export default function Home() {
   return (
     <main className="bg-slate-50 text-slate-950 px-5 py-5">
-      <Header />
-      <InfoCardGrid />
-      <Body />
-      <StockHoldingsTable />
-      <TransactionsTable />
+      <div  className="mx-auto grid max-w-7xl gap-4">
+        <Header />
+        <InfoCardGrid />
+        <Body />
+        <StockHoldingsTable />
+        <TransactionsTable />
+      </div>
     </main>
   );
 }

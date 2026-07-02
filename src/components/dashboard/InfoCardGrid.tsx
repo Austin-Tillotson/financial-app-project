@@ -3,7 +3,7 @@ import { InfoCard } from "./InfoCard";
 
 export function InfoCardGrid() {
   return (
-    <section className="grid md:grid-cols-2 xl:grid-cols-4">
+    <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
       {infoCards.map((card) => (
         <InfoCard
           key={card.label}

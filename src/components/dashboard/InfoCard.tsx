@@ -9,21 +9,21 @@ type InfoCardProps = {
 };
 
 const trendStyles = {
-  positive: "text-green-500",
-  negative: "text-red-500",
-  neutral: "text-yellow-500",
+  positive: "text-green-600",
+  negative: "text-red-600",
+  neutral: "text-yellow-600",
 };
 
 export function InfoCard({ label, value, change, trend }: InfoCardProps) {
   return (
     <Card>
-      <p className="">{label}</p>
+      <p className="text-sm text-slate-500">{label}</p>
 
-      <p className="">
+      <p className="mt-2 mb-2 text-2xl font-semibold text-slate-900">
         {value}
       </p>
 
-      <p className={`${trendStyles[trend]}`}>
+      <p className={`text-sm ${trendStyles[trend]}`}>
         {change}
       </p>
     </Card>

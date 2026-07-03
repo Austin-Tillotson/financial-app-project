@@ -21,7 +21,7 @@ const formatCurrency: Formatter = (value) => {
 
 export function AllocationChart() {
   return (
-    <ResponsiveContainer width="100%" height={240}>
+    <ResponsiveContainer width="100%" height={220}>
       <PieChart>
         <Pie
           data={allocationData}

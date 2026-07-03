@@ -37,16 +37,36 @@ const yAxisDomain: [number, number] = [
 export function PerformanceChart() {
   return (
     <ResponsiveContainer width="100%" height={240}>
-      <LineChart data={performanceData}>
-        <CartesianGrid />
-        <XAxis dataKey="month" />
+      <LineChart 
+        data={performanceData}
+        margin={{ top: 8, right: 12, left: 0, bottom: 0 }}  
+      >
+        <CartesianGrid 
+          vertical={false}
+          stroke="#e2e8f0"
+        />
+        <XAxis 
+          dataKey="month"
+          axisLine={false}
+          tickLine={false}
+          tickMargin={8}
+          tick={{ fontSize: 12, fill: "#64748b" }}
+        />
         <YAxis 
-            domain={yAxisDomain}
-            tickFormatter={(value: number) => `$${value / 1000}k`} 
+          domain={yAxisDomain}
+          axisLine={false}
+          tickLine={false}
+          tickMargin={8}
+          tick={{ fontSize: 12, fill: "#64748b" }}
+          tickFormatter={(value: number) => `$${value / 1000}k`}
         />
         <Tooltip formatter={formatCurrency} />
         <Line
           dataKey="balance"
+          stroke="#853adb"
+          strokeWidth={2}
+          dot={{ r: 3 }}
+          activeDot={{ r: 5 }}
         />
       </LineChart>
     </ResponsiveContainer>

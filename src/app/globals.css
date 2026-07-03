@@ -20,7 +20,7 @@ body {
 }
 
 .dashboard-card-header {
-  @apply mb-4 text-lg font-semibold text-slate-950
+  @apply mb-4 text-lg font-semibold text-slate-950;
 }
 
 .dashboard-table {

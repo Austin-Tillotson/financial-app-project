@@ -6,12 +6,12 @@ export function Body() {
   return (
     <section className="grid gap-4 md:grid-cols-2">
       <Card>
-        <h2>Portfolio Performance</h2>
+        <h2 className="dashboard-card-header">Portfolio Performance</h2>
         <PerformanceChart />
       </Card>
 
       <Card>
-        <h2>Asset Allocation</h2>
+        <h2 className="dashboard-card-header">Asset Allocation</h2>
         <AllocationBreakdown />
       </Card>
     </section>

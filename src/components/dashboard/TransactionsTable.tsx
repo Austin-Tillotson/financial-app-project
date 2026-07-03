@@ -5,7 +5,7 @@ export function TransactionsTable() {
   return (
     <Card className="overflow-x-auto">
       <section>
-        <h2 className="dashboard-table-header">Recent Transactions</h2>
+        <h2 className="dashboard-card-header">Recent Transactions</h2>
 
         <table className="dashboard-table">
           <thead>

@@ -19,7 +19,7 @@ body {
   color: var(--foreground);
 }
 
-.dashboard-table-header {
+.dashboard-card-header {
   @apply mb-4 text-lg font-semibold text-slate-950
 }
 

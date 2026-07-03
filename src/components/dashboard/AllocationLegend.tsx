@@ -6,12 +6,12 @@ const totalAllocation = allocationData.reduce((total, item) => {
 
 export function AllocationLegend() {
   return (
-    <ul>
+    <ul className="grid gap-2 text-sm">
       {allocationData.map((item) => {
         const percentage = Math.round((item.value / totalAllocation) * 100);
 
         return (
-          <li key={item.name}>
+          <li className="flex gap-1" key={item.name}>
             <span>{item.name}</span>
             <span>{percentage}%</span>
           </li>

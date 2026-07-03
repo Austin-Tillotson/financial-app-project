@@ -11,7 +11,7 @@ export function StockHoldingsTable() {
   return (
     <Card className="overflow-x-auto">
       <section>
-        <h2 className="dashboard-table-header">Stock Holdings</h2>
+        <h2 className="dashboard-card-header">Stock Holdings</h2>
 
         <table className="dashboard-table">
           <thead>

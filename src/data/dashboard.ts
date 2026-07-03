@@ -48,9 +48,18 @@ export const performanceData: PerformanceData[] = [
   { month: "Jun", balance: 205654 },
 ];
 
+export type AllocationName = "Cash" | "Stocks" | "401(k)" | "Debt";
+
 export type AllocationData = {
-  name: string;
+  name: AllocationName;
   value: number;
+};
+
+export const allocationColors: Record<AllocationName, string> = {
+  Cash: "#2563eb",
+  Stocks: "#16a34a",
+  "401(k)": "#9333ea",
+  Debt: "#dc2626",
 };
 
 export const allocationData: AllocationData[] = [

@@ -9,7 +9,7 @@ import {
 } from "recharts";
 import type { Formatter } from "recharts/types/component/DefaultTooltipContent";
 
-import { allocationData } from "@/data/dashboard";
+import { allocationColors, allocationData } from "@/data/dashboard";
 
 const formatCurrency: Formatter = (value) => {
   if (typeof value === "number") {
@@ -19,8 +19,6 @@ const formatCurrency: Formatter = (value) => {
   return value ?? "";
 };
 
-const colors = ["blue", "green", "purple", "red"];
-
 export function AllocationChart() {
   return (
     <ResponsiveContainer width="100%" height={240}>
@@ -29,9 +27,10 @@ export function AllocationChart() {
           data={allocationData}
           dataKey="value"
           nameKey="name"
+          innerRadius={55}
         >
           {allocationData.map((entry, index) => (
-            <Cell key={entry.name} fill={colors[index]} />
+            <Cell key={entry.name} fill={allocationColors[entry.name]} />
           ))}
         </Pie>
 

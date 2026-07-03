@@ -1,4 +1,4 @@
-import { allocationData } from "@/data/dashboard";
+import { allocationColors, allocationData } from "@/data/dashboard";
 
 const totalAllocation = allocationData.reduce((total, item) => {
   return total + item.value;
@@ -11,7 +11,11 @@ export function AllocationLegend() {
         const percentage = Math.round((item.value / totalAllocation) * 100);
 
         return (
-          <li className="flex gap-1" key={item.name}>
+          <li className="flex items-center gap-2" key={item.name}>
+            <span
+              className="h-2 w-2 rounded-full"
+              style={{ backgroundColor: allocationColors[item.name] }}
+            />
             <span>{item.name}</span>
             <span>{percentage}%</span>
           </li>

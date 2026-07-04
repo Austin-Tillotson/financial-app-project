@@ -14,7 +14,7 @@ export function Header() {
         <div>
           <p className="text-sm text-slate-500">Financial Dashboard</p>
           <h1 className="text-2xl font-semibold text-slate-950">
-            Personal Finance Overview
+            Personal Finance
           </h1>
         </div>
 

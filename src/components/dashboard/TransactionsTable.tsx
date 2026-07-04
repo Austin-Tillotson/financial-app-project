@@ -16,10 +16,10 @@ export function TransactionsTable() {
         <table className="dashboard-table">
           <colgroup>
             <col className="w-25" />
-            <col className="w-100" />
-            <col className="w-62.5" />
-            <col className="w-31.25" />
-            <col className="w-31.25" />
+            <col className="w-135" />
+            <col className="w-40" />
+            <col className="w-35" />
+            <col className="w-15" />
           </colgroup>
           <thead>
             <tr className="dashboard-table-head-row">

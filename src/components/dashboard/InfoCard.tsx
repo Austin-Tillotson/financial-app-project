@@ -23,7 +23,7 @@ export function InfoCard({ label, value, change, trend }: InfoCardProps) {
         {value}
       </p>
 
-      <p className={`text-sm ${trendStyles[trend]}`}>
+      <p className={`text-sm font-medium ${trendStyles[trend]}`}>
         {change}
       </p>
     </Card>

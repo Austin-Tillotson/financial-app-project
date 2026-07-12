@@ -1,5 +1,13 @@
 "use client";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChartLine,
+  faChartPie,
+  faGear,
+  faReceipt,
+  faWallet,
+} from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -8,11 +16,11 @@ type NavMenuProps = {
 };
 
 const navigationItems = [
-  { label: "Overview", href: "/" },
-  { label: "Accounts", href: "/accounts" },
-  { label: "Transactions", href: "/transactions" },
-  { label: "Investments", href: "/investments" },
-  { label: "Settings", href: "/settings" },
+  { label: "Overview", href: "/", icon: faChartPie },
+  { label: "Accounts", href: "/accounts", icon: faWallet },
+  { label: "Transactions", href: "/transactions", icon: faReceipt },
+  { label: "Investments", href: "/investments", icon: faChartLine },
+  { label: "Settings", href: "/settings", icon: faGear },
 ];
 
 export function NavMenu({ direction = "row" }: NavMenuProps) {
@@ -33,12 +41,13 @@ export function NavMenu({ direction = "row" }: NavMenuProps) {
             <Link
               className={
                 isActive
-                  ? "font-medium text-slate-950"
-                  : "hover:text-slate-950"
+                  ? "flex items-center gap-2 font-medium text-slate-950"
+                  : "flex items-center gap-2 hover:text-slate-950"
               }
               href={item.href}
             >
-              {item.label}
+              <FontAwesomeIcon className="h-4 w-4" icon={item.icon} />
+              <span>{item.label}</span>
             </Link>
           </li>
         );

@@ -68,8 +68,8 @@ function NavItem({ item }: { item: NavigationItem }) {
     <Link
       className={
         isActive
-          ? "flex items-center gap-3 font-medium text-slate-950"
-          : "flex items-center gap-3 text-slate-600 hover:text-slate-950"
+          ? "flex items-center gap-2 rounded-lg bg-violet-50 px-3 py-2 font-medium text-violet-700"
+          : "flex items-center gap-2 rounded-lg px-3 py-2 text-slate-600 hover:bg-violet-50 hover:text-violet-700"
       }
       href={item.href}
     >
@@ -93,14 +93,14 @@ export function NavMenu({ direction = "row" }: NavMenuProps) {
   }
 
   return (
-    <div className="grid gap-10 text-sm">
+    <div className="grid gap-6 text-sm">
       {navigationSections.map((section) => (
         <section key={section.title}>
           <h2 className="mb-4 text-xs font-semibold uppercase text-slate-400">
             {section.title}
           </h2>
 
-          <ul className="grid gap-4">
+          <ul className="grid gap-2">
             {section.items.map((item) => (
               <li key={item.href}>
                 <NavItem item={item} />

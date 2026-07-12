@@ -1,57 +1,114 @@
 "use client";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChartLine,
-  faChartPie,
-  faGear,
-  faReceipt,
-  faWallet,
-} from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBullseye,
+  faChartLine,
+  faChartPie,
+  faFileLines,
+  faGear,
+  faReceipt,
+  faScaleBalanced,
+  faUser,
+  faWallet,
+} from "@fortawesome/free-solid-svg-icons";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 type NavMenuProps = {
   direction?: "row" | "column";
 };
 
-const navigationItems = [
-  { label: "Overview", href: "/", icon: faChartPie },
-  { label: "Accounts", href: "/accounts", icon: faWallet },
-  { label: "Transactions", href: "/transactions", icon: faReceipt },
-  { label: "Investments", href: "/investments", icon: faChartLine },
-  { label: "Settings", href: "/settings", icon: faGear },
+type NavigationItem = {
+  label: string;
+  href: string;
+  icon: IconDefinition;
+};
+
+type NavigationSection = {
+  title: string;
+  items: NavigationItem[];
+};
+
+const navigationSections: NavigationSection[] = [
+  {
+    title: "Overview",
+    items: [
+      { label: "Dashboard", href: "/", icon: faChartPie },
+      { label: "Accounts", href: "/accounts", icon: faWallet },
+      { label: "Budgets", href: "/budgets", icon: faScaleBalanced },
+    ],
+  },
+  {
+    title: "Activity",
+    items: [
+      { label: "Transactions", href: "/transactions", icon: faReceipt },
+      { label: "Investments", href: "/investments", icon: faChartLine },
+      { label: "Goals", href: "/goals", icon: faBullseye },
+      { label: "Reports", href: "/reports", icon: faFileLines },
+    ],
+  },
+  {
+    title: "System",
+    items: [
+      { label: "Settings", href: "/settings", icon: faGear },
+      { label: "Profile", href: "/profile", icon: faUser },
+    ],
+  },
 ];
 
-export function NavMenu({ direction = "row" }: NavMenuProps) {
-  const pathname = usePathname();
+const navigationItems = navigationSections.flatMap((section) => section.items);
 
-  const listClassName =
-    direction === "row"
-      ? "flex flex-wrap gap-4 text-sm text-slate-600"
-      : "grid gap-3 text-sm text-slate-600";
+function NavItem({ item }: { item: NavigationItem }) {
+  const pathname = usePathname();
+  const isActive = pathname === item.href;
 
   return (
-    <ul className={listClassName}>
-      {navigationItems.map((item) => {
-        const isActive = pathname === item.href;
+    <Link
+      className={
+        isActive
+          ? "flex items-center gap-3 font-medium text-slate-950"
+          : "flex items-center gap-3 text-slate-600 hover:text-slate-950"
+      }
+      href={item.href}
+    >
+      <FontAwesomeIcon className="h-4 w-4" icon={item.icon} />
+      <span>{item.label}</span>
+    </Link>
+  );
+}
 
-        return (
+export function NavMenu({ direction = "row" }: NavMenuProps) {
+  if (direction === "row") {
+    return (
+      <ul className="flex flex-wrap gap-4 text-sm">
+        {navigationItems.map((item) => (
           <li key={item.href}>
-            <Link
-              className={
-                isActive
-                  ? "flex items-center gap-2 font-medium text-slate-950"
-                  : "flex items-center gap-2 hover:text-slate-950"
-              }
-              href={item.href}
-            >
-              <FontAwesomeIcon className="h-4 w-4" icon={item.icon} />
-              <span>{item.label}</span>
-            </Link>
+            <NavItem item={item} />
           </li>
-        );
-      })}
-    </ul>
+        ))}
+      </ul>
+    );
+  }
+
+  return (
+    <div className="grid gap-10 text-sm">
+      {navigationSections.map((section) => (
+        <section key={section.title}>
+          <h2 className="mb-4 text-xs font-semibold uppercase text-slate-400">
+            {section.title}
+          </h2>
+
+          <ul className="grid gap-4">
+            {section.items.map((item) => (
+              <li key={item.href}>
+                <NavItem item={item} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
   );
 }

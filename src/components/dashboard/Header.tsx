@@ -20,7 +20,7 @@ export function Header() {
 
         <div className="flex gap-2">
           <button
-            className="flex w-9 items-center justify-center md:hidden"
+            className="flex w-9 items-center justify-center lg:hidden"
             type="button"
             aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={isMenuOpen}
@@ -41,12 +41,8 @@ export function Header() {
         </div>
       </div>
 
-      <nav className="mt-4 hidden md:block" aria-label="Dashboard navigation">
-        <NavMenu />
-      </nav>
-
       {isMenuOpen && (
-        <nav className="mt-4 md:hidden" aria-label="Mobile dashboard navigation">
+        <nav className="mt-4 lg:hidden" aria-label="Mobile dashboard navigation">
           <NavMenu direction="column" />
         </nav>
       )}

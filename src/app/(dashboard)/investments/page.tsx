@@ -3,9 +3,17 @@ export default async function InvestmentsPage() {
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
   return (
-    <section>
-      <h2 className="dashboard-card-header">Investments</h2>
-      <p>This is the investments page.</p>
+    <section className="hidden gap-2 lg:grid">
+      <div className="grid gap-2 md:grid-cols-[1fr_auto] md:items-end">
+        <div>
+          <h2 className="text-3xl font-semibold text-slate-950">
+            Investments
+          </h2>
+          <p className="mt-1 max-w-2xl text-sm text-slate-600">
+            This is the investments page.
+          </p>
+        </div>
+      </div>
     </section>
   );
 }

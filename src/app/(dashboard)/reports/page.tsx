@@ -3,9 +3,17 @@ export default async function ReportsPage() {
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
   return (
-    <section>
-      <h2 className="dashboard-card-header">Reports</h2>
-      <p>This is the reports page.</p>
+    <section className="hidden gap-2 lg:grid">
+      <div className="grid gap-2 md:grid-cols-[1fr_auto] md:items-end">
+        <div>
+          <h2 className="text-3xl font-semibold text-slate-950">
+            Reports
+          </h2>
+          <p className="mt-1 max-w-2xl text-sm text-slate-600">
+            This is the reports page.
+          </p>
+        </div>
+      </div>
     </section>
   );
 }

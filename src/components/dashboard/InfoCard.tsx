@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type { Trend } from "@/data/dashboard";
 import { Card } from "../ui/Card";
 
@@ -6,6 +7,7 @@ type InfoCardProps = {
   value: string;
   change: string;
   trend: Trend;
+  children?: ReactNode;
 };
 
 const trendStyles = {
@@ -14,7 +16,13 @@ const trendStyles = {
   neutral: "text-yellow-600",
 };
 
-export function InfoCard({ label, value, change, trend }: InfoCardProps) {
+export function InfoCard({
+  label,
+  value,
+  change,
+  trend,
+  children,
+}: InfoCardProps) {
   return (
     <Card>
       <p className="text-sm text-slate-500">{label}</p>
@@ -26,6 +34,8 @@ export function InfoCard({ label, value, change, trend }: InfoCardProps) {
       <p className={`text-sm font-medium ${trendStyles[trend]}`}>
         {change}
       </p>
+
+      {children}
     </Card>
   );
 }

@@ -1,17 +1,11 @@
-import { infoCards } from "@/data/dashboard";
-import { InfoCard } from "./InfoCard";
+import { dashboardInfoCards } from "@/data/dashboard";
+import { DashboardInfoCard } from "./DashboardInfoCard";
 
 export function InfoCardGrid() {
   return (
     <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-      {infoCards.map((card) => (
-        <InfoCard
-          key={card.label}
-          label={card.label}
-          value={card.value}
-          change={card.change}
-          trend={card.trend}
-        />
+      {dashboardInfoCards.map((card) => (
+        <DashboardInfoCard key={card.label} {...card} />
       ))}
     </section>
   );

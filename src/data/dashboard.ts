@@ -7,30 +7,71 @@ export type InfoCardData = {
   trend: Trend;
 };
 
-export const infoCards: InfoCardData[] = [
+export type InfoCardHistoryPoint = {
+  month: string;
+  value: number;
+};
+
+export type DashboardInfoCardData = InfoCardData & {
+  history: InfoCardHistoryPoint[];
+};
+
+export const dashboardInfoCards: DashboardInfoCardData[] = [
   {
     label: "Net Worth",
     value: "$205,654",
     change: "+3.8% this month",
     trend: "positive",
+    history: [
+      { month: "Jan", value: 178000 },
+      { month: "Feb", value: 181500 },
+      { month: "Mar", value: 186200 },
+      { month: "Apr", value: 191000 },
+      { month: "May", value: 198400 },
+      { month: "Jun", value: 205654 },
+    ],
   },
   {
     label: "Debt",
     value: "$11,834",
     change: "+0.6% weekly",
     trend: "neutral",
+    history: [
+      { month: "Jan", value: 12800 },
+      { month: "Feb", value: 12450 },
+      { month: "Mar", value: 12100 },
+      { month: "Apr", value: 11950 },
+      { month: "May", value: 11760 },
+      { month: "Jun", value: 11834 },
+    ],
   },
   {
     label: "Stock Portfolio",
     value: "$25,249",
     change: "-1.2% this week",
     trend: "negative",
+    history: [
+      { month: "Jan", value: 22100 },
+      { month: "Feb", value: 23600 },
+      { month: "Mar", value: 24400 },
+      { month: "Apr", value: 26100 },
+      { month: "May", value: 25550 },
+      { month: "Jun", value: 25249 },
+    ],
   },
   {
     label: "401(k) Balance",
     value: "$150,634",
     change: "+0.9% this month",
     trend: "positive",
+    history: [
+      { month: "Jan", value: 137500 },
+      { month: "Feb", value: 140200 },
+      { month: "Mar", value: 143100 },
+      { month: "Apr", value: 146800 },
+      { month: "May", value: 149200 },
+      { month: "Jun", value: 150634 },
+    ],
   },
 ];
 

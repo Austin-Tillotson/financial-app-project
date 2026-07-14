@@ -94,8 +94,11 @@ export function NavMenu({ direction = "row" }: NavMenuProps) {
 
   return (
     <div className="grid gap-6 text-sm">
-      {navigationSections.map((section) => (
-        <section key={section.title}>
+      {navigationSections.map((section, index) => (
+        <section
+          className={index === 0 ? "" : "border-t border-slate-200 pt-3"}
+          key={section.title}
+        >
           <h2 className="mb-4 text-xs font-semibold uppercase text-slate-400">
             {section.title}
           </h2>

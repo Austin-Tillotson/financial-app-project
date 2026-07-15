@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { PrimeReactProvider } from "primereact/api";
+import "primereact/resources/themes/lara-light-purple/theme.css";
+import "primeicons/primeicons.css";
 import "./globals.css";
 
 const inter = Inter({
@@ -20,7 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.variable}>{children}</body>
+      <body className={inter.variable}>
+        <PrimeReactProvider>{children}</PrimeReactProvider>
+      </body>
     </html>
   );
 }

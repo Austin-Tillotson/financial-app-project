@@ -4,7 +4,9 @@ import { useState } from "react";
 import type { DashboardInfoCardData } from "@/data/dashboard";
 import { Card } from "@/components/ui/Card";
 import { InfoCard } from "./InfoCard";
+import { InfoCardChangeTable } from "./InfoCardChangeTable";
 import { InfoCardSparkline } from "./InfoCardSparkline";
+import { StockPortfolioBack } from "./StockPortfolioBack";
 
 type DashboardInfoCardProps = DashboardInfoCardData;
 
@@ -41,7 +43,13 @@ export function DashboardInfoCard({
         </div>
 
         <div className="absolute inset-0 backface-hidden transform-[rotateY(180deg)]">
-          <Card className="h-full">{null}</Card>
+          <Card className="h-full">
+            {label === "Stock Portfolio" ? (
+              <StockPortfolioBack />
+            ) : (
+              <InfoCardChangeTable history={history} />
+            )}
+          </Card>
         </div>
       </div>
     </article>

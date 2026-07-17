@@ -12,7 +12,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Financial Dashboard",
+  title: "BalancePoint - Financial Dashboard",
   description: "A modern finance dashboard built with Next.js.",
 };
 

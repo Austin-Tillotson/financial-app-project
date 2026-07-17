@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { NavMenu } from "./NavMenu";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -11,11 +12,20 @@ export function Header() {
   return (
     <header className="rounded-lg border border-slate-200 bg-white p-4 lg:hidden">
       <div className="grid gap-4 md:grid-cols-[1fr_auto] md:items-center">
-        <div>
-          <p className="text-sm text-slate-500">Financial Dashboard</p>
-          <h1 className="text-2xl font-semibold text-slate-950">
-            Personal Finance
-          </h1>
+        <div className="flex items-center gap-3">
+          <Image
+            src="/balancepoint-mark.svg"
+            alt="BalancePoint"
+            width={36}
+            height={36}
+          />
+
+          <div>
+            <p className="text-sm text-slate-500">Financial Dashboard</p>
+            <h1 className="text-2xl font-semibold text-slate-950">
+              BalancePoint
+            </h1>
+          </div>
         </div>
 
         <div className="flex gap-2">

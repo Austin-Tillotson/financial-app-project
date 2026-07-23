@@ -1,9 +1,9 @@
 "use client";
 
 import {
+  Area,
+  AreaChart,
   CartesianGrid,
-  Line,
-  LineChart,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -37,10 +37,36 @@ const yAxisDomain: [number, number] = [
 export function PerformanceChart() {
   return (
     <ResponsiveContainer width="100%" height={240}>
-      <LineChart 
+      <AreaChart 
         data={performanceData}
         margin={{ top: 8, right: 12, left: 0, bottom: 0 }}  
       >
+        <defs>
+          <linearGradient
+            id="performanceLineGradient"
+            x1="0"
+            y1="0"
+            x2="1"
+            y2="0"
+          >
+            <stop offset="0%" stopColor="#f59e0b" />
+            <stop offset="50%" stopColor="#db2777" />
+            <stop offset="100%" stopColor="#853adb" />
+          </linearGradient>
+
+          <linearGradient
+            id="performanceFillGradient"
+            x1="0"
+            y1="0"
+            x2="1"
+            y2="0"
+          >
+            <stop offset="0%" stopColor="#f59e0b" stopOpacity={0.14} />
+            <stop offset="50%" stopColor="#db2777" stopOpacity={0.12} />
+            <stop offset="100%" stopColor="#853adb" stopOpacity={0.16} />
+          </linearGradient>
+        </defs>
+
         <CartesianGrid 
           vertical={false}
           stroke="#e2e8f0"
@@ -61,14 +87,17 @@ export function PerformanceChart() {
           tickFormatter={(value: number) => `$${value / 1000}k`}
         />
         <Tooltip formatter={formatCurrency} />
-        <Line
+        <Area
           dataKey="balance"
-          stroke="#853adb"
-          strokeWidth={2}
-          dot={{ r: 3 }}
-          activeDot={{ r: 5 }}
+          type="monotone"
+          stroke="url(#performanceLineGradient)"
+          strokeWidth={3}
+          fill="url(#performanceFillGradient)"
+          fillOpacity={1}
+          dot={false}
+          activeDot={false}
         />
-      </LineChart>
+      </AreaChart>
     </ResponsiveContainer>
   );
 }

@@ -22,7 +22,7 @@ export function Header() {
 
           <div>
             <p className="text-sm text-slate-500">Financial Dashboard</p>
-            <h1 className="text-2xl font-semibold text-slate-950">
+            <h1 className="text-2xl font-semibold text-violet-700">
               BalancePoint
             </h1>
           </div>

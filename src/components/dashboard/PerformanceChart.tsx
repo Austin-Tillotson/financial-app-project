@@ -142,6 +142,7 @@ export function PerformanceChart() {
         <CartesianGrid 
           vertical={false}
           stroke="#e2e8f0"
+          strokeDasharray="4 4"
         />
         <XAxis 
           dataKey="month"
@@ -155,8 +156,8 @@ export function PerformanceChart() {
           axisLine={false}
           tickLine={false}
           tickMargin={8}
-          tick={{ fontSize: 12, fill: "#64748b" }}
-          tickFormatter={(value: number) => `$${value / 1000}k`}
+          tick={{ fontSize: 12, fill: "#64748b", dy: -4 }}
+          tickFormatter={(value: number) => `$${Math.round(value / 1000)}k`}
         />
         <Tooltip
           content={<PerformanceTooltip />}

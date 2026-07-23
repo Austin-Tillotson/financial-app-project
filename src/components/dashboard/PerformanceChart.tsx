@@ -9,16 +9,22 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import type { Formatter } from "recharts/types/component/DefaultTooltipContent";
 
 import { performanceData } from "@/data/dashboard";
 
-const formatCurrency: Formatter = (value) => {
-  if (typeof value === "number") {
-    return `$${value.toLocaleString()}`;
-  }
-
-  return value ?? "";
+const monthNames: Record<string, string> = {
+  Jan: "January",
+  Feb: "February",
+  Mar: "March",
+  Apr: "April",
+  May: "May",
+  Jun: "June",
+  Jul: "July",
+  Aug: "August",
+  Sep: "September",
+  Oct: "October",
+  Nov: "November",
+  Dec: "December",
 };
 
 const balances = performanceData.map((dataPoint) => dataPoint.balance);
@@ -33,6 +39,72 @@ const yAxisDomain: [number, number] = [
   Math.floor((minBalance - axisPadding) / 1000) * 1000,
   Math.ceil((maxBalance + axisPadding) / 1000) * 1000,
 ];
+
+type TooltipPayload = {
+  payload: {
+    month: string;
+    balance: number;
+  };
+};
+
+type PerformanceTooltipProps = {
+  active?: boolean;
+  payload?: TooltipPayload[];
+};
+
+function formatCurrency(value: number) {
+  return new Intl.NumberFormat("en-US", {
+    currency: "USD",
+    maximumFractionDigits: 0,
+    style: "currency",
+  }).format(value);
+}
+
+function PerformanceTooltip({ active, payload }: PerformanceTooltipProps) {
+  if (!active || !payload?.length) {
+    return null;
+  }
+
+  const currentPoint = payload[0].payload;
+  const currentIndex = performanceData.findIndex(
+    (point) => point.month === currentPoint.month
+  );
+
+  const previousPoint = performanceData[currentIndex - 1];
+  const monthlyChange = previousPoint
+    ? currentPoint.balance - previousPoint.balance
+    : 0;
+
+  const changePercent = previousPoint
+    ? (monthlyChange / previousPoint.balance) * 100
+    : 0;
+
+  const isPositive = monthlyChange >= 0;
+
+  return (
+    <div className="rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-sm">
+      <p className="text-xs text-slate-400">
+        {monthNames[currentPoint.month]} 2026
+      </p>
+
+      <div className="mt-1 flex items-center gap-2">
+        <p className="text-sm font-semibold text-slate-950">
+          {formatCurrency(currentPoint.balance)}
+        </p>
+
+        {previousPoint && (
+          <p
+            className={`text-xs font-medium ${
+              isPositive ? "text-green-600" : "text-red-600"
+            }`}
+          >
+            {isPositive ? "+" : "-"}{Math.abs(changePercent).toFixed(1)}%
+          </p>
+        )}
+      </div>
+    </div>
+  );
+}
 
 export function PerformanceChart() {
   return (
@@ -86,7 +158,14 @@ export function PerformanceChart() {
           tick={{ fontSize: 12, fill: "#64748b" }}
           tickFormatter={(value: number) => `$${value / 1000}k`}
         />
-        <Tooltip formatter={formatCurrency} />
+        <Tooltip
+          content={<PerformanceTooltip />}
+          cursor={{
+            stroke: "#c4b5fd",
+            strokeDasharray: "3",
+            strokeWidth: 1,
+          }}
+        />
         <Area
           dataKey="balance"
           type="monotone"

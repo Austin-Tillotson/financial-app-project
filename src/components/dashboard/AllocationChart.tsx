@@ -1,25 +1,28 @@
 "use client";
 
+import { useState } from "react";
 import {
   Cell,
   Pie,
   PieChart,
   ResponsiveContainer,
   Sector,
-  Tooltip,
   type PieSectorShapeProps,
 } from "recharts";
-import type { Formatter } from "recharts/types/component/DefaultTooltipContent";
 
 import { allocationColors, allocationData } from "@/data/dashboard";
 
-const formatCurrency: Formatter = (value) => {
-  if (typeof value === "number") {
-    return `$${value.toLocaleString()}`;
-  }
+const totalAllocation = allocationData.reduce((total, item) => {
+  return total + item.value;
+}, 0);
 
-  return value ?? "";
-};
+function formatCurrency(value: number) {
+  return new Intl.NumberFormat("en-US", {
+    currency: "USD",
+    maximumFractionDigits: 0,
+    style: "currency",
+  }).format(value);
+}
 
 function getActiveColor(hex: string, amount: number) {
   const value = hex.replace("#", "");
@@ -48,6 +51,10 @@ function AllocationSlice(props: PieSectorShapeProps) {
 }
 
 export function AllocationChart() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const activeItem = allocationData[activeIndex];
+
   return (
     <div className="h-55 min-w-55">
       <ResponsiveContainer width="100%" height="100%">
@@ -59,13 +66,32 @@ export function AllocationChart() {
             innerRadius={55}
             outerRadius={85}
             shape={AllocationSlice}
+            onMouseEnter={(_, index) => setActiveIndex(index)}
           >
             {allocationData.map((entry) => (
               <Cell key={entry.name} fill={allocationColors[entry.name]} />
             ))}
           </Pie>
 
-          <Tooltip formatter={formatCurrency} />
+          <text
+            x="50%"
+            y="45%"
+            textAnchor="middle"
+            dominantBaseline="middle"
+            className="fill-slate-500 text-xs"
+          >
+            {activeItem.name}
+          </text>
+
+          <text
+            x="50%"
+            y="56%"
+            textAnchor="middle"
+            dominantBaseline="middle"
+            className="fill-slate-950 text-sm font-semibold"
+          >
+            {formatCurrency(activeItem.value)}
+          </text>
         </PieChart>
       </ResponsiveContainer>
     </div>

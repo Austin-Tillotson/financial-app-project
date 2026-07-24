@@ -5,9 +5,12 @@ import { PerformanceChart } from "./PerformanceChart";
 export function Body() {
   return (
     <section className="grid gap-4 md:grid-cols-2">
-      <Card>
+      <Card className="flex min-h-105 flex-col xl:min-h-0">
         <h2 className="dashboard-card-header">Portfolio Performance</h2>
-        <PerformanceChart />
+
+        <div className="mt-auto xl:mt-0">
+          <PerformanceChart />
+        </div>
       </Card>
 
       <Card>

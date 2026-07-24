@@ -21,21 +21,24 @@ const formatCurrency: Formatter = (value) => {
 
 export function AllocationChart() {
   return (
-    <ResponsiveContainer width="100%" height={220}>
-      <PieChart>
-        <Pie
-          data={allocationData}
-          dataKey="value"
-          nameKey="name"
-          innerRadius={55}
-        >
-          {allocationData.map((entry, index) => (
-            <Cell key={entry.name} fill={allocationColors[entry.name]} />
-          ))}
-        </Pie>
+    <div className="h-55 min-w-55">
+      <ResponsiveContainer width="100%" height="100%">
+        <PieChart>
+          <Pie
+            data={allocationData}
+            dataKey="value"
+            nameKey="name"
+            innerRadius={55}
+            outerRadius={85}
+          >
+            {allocationData.map((entry) => (
+              <Cell key={entry.name} fill={allocationColors[entry.name]} />
+            ))}
+          </Pie>
 
-        <Tooltip formatter={formatCurrency} />
-      </PieChart>
-    </ResponsiveContainer>
+          <Tooltip formatter={formatCurrency} />
+        </PieChart>
+      </ResponsiveContainer>
+    </div>
   );
 }

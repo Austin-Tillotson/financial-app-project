@@ -3,7 +3,7 @@ import { AllocationLegend } from "./AllocationLegend";
 
 export function AllocationBreakdown() {
   return (
-    <div className="grid gap-4 sm:items-center  sm:grid-cols-[1fr_auto] xl:grid-cols-[1fr_auto_50px]">
+    <div className="grid gap-4 xl:grid-cols-[minmax(220px,1fr)_minmax(160px,50%)] xl:items-center">
       <AllocationChart />
       <AllocationLegend />
     </div>
